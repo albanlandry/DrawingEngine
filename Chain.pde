@@ -1,10 +1,9 @@
-class LineAnchor {
+class Anchor {
   PVector p0;
   PVector p1;
   PVector p2;
 
-  
-  public LineAnchor(PVector a, PVector b, PVector c) {
+  public Anchor(PVector a, PVector b, PVector c) {
     this.p0 = a;
     this.p1 = b;
     this.p2 = c;
@@ -16,7 +15,7 @@ class LineAnchor {
 class Chain{
   private ArrayList<Node> nodes = new ArrayList<Node>();
   private ArrayList<PVector> mids = new ArrayList<PVector>();
-  private ArrayList<LineAnchor> anchors = new ArrayList<LineAnchor>();
+  private ArrayList<Anchor> anchors = new ArrayList<Anchor>();
   
   void add(PVector p){
     nodes.add(new Node(p));
@@ -35,8 +34,7 @@ class Chain{
       
       // Create anchors
       for(int i = 0; i < SIZE - 2; i++) {
-        
-        // anchors.add(Anchor(mids.get(i-1), nodes.get(i).pos, mids.get(i)));
+        anchors.add(new Anchor(mids.get(i-1), nodes.get(i).pos, mids.get(i)));
       }
     }
   }
