@@ -139,7 +139,3 @@ class Segment extends Node {
     triangle(b.x, b.y, c.x, c.y, d.x, d.y);
   }
 }
-
-class LineAnchor extends Node {
-  
-}
