@@ -4,7 +4,8 @@ int HEIGHT = 500;
 Segment seg = new Segment(new PVector(50, 50), new PVector(400, 100), 50);
 PVector prev;
 ArrayList<Node> line = new ArrayList<Node>();
-final float SPACING = 20.0;
+final float SPACING = 50.0;
+Chain chain = new Chain();
 
 void setup() {
   size(700, 500);
@@ -23,9 +24,16 @@ void draw() {
     // rect(0, 0, width, height);
     // ((Segment)n).drawStartPoint();
     // ((Segment)n).drawEndPoint();
-    n.draw();
+    // n.draw();
   }
   
+  chain.draw();
+  
+  PVector point = intersect(new PVector(0, 0), new PVector(2, 2), new PVector(0, 2), new PVector(2, 0));
+  PVector point2 = intersect(new PVector(0, 0), new PVector(2, 2), new PVector(2, 2), new PVector(4, 4));
+  
+  
+  // println("intersection", point, point2);
   /*
   if (seg.mWidth >= 100) { 
     seg.mWidth = 10;
@@ -43,6 +51,7 @@ void mouseDragged() {
     
   if (prev == null) {
     prev = pos.copy();
+    chain.add(prev);
     return;
   } 
     
@@ -62,6 +71,9 @@ void mouseDragged() {
       
       prev = currentPt.copy();
       leftOverDistance -= SPACING;
+      
+      // adding to the chain
+      chain.add(currentPt);
     }
   }
   
